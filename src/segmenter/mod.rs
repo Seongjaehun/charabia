@@ -7,6 +7,8 @@ pub use chinese::ChineseSegmenter;
 pub use hebrew::HebrewSegmenter;
 #[cfg(feature = "japanese")]
 pub use japanese::JapaneseSegmenter;
+#[cfg(feature = "hangul")]
+pub use hangul::HangulSegmenter;
 pub use latin::LatinSegmenter;
 use once_cell::sync::Lazy;
 use slice_group_by::StrGroupBy;
@@ -22,6 +24,8 @@ mod chinese;
 mod hebrew;
 #[cfg(feature = "japanese")]
 mod japanese;
+#[cfg(feature = "hangul")]
+mod hangul;
 mod latin;
 #[cfg(feature = "thai")]
 mod thai;
@@ -50,6 +54,9 @@ pub static SEGMENTERS: Lazy<HashMap<(Script, Language), Box<dyn Segmenter>>> = L
         // japanese segmenter
         #[cfg(feature = "japanese")]
         ((Script::Cj, Language::Jpn), Box::new(JapaneseSegmenter) as Box<dyn Segmenter>),
+        // hangul segmenter
+        #[cfg(feature = "hangul")]
+        ((Script::Hangul, Language::Kor), Box::new(HangulSegmenter) as Box<dyn Segmenter>),
         // thai segmenter
         #[cfg(feature = "thai")]
         ((Script::Thai, Language::Tha), Box::new(ThaiSegmenter) as Box<dyn Segmenter>),
