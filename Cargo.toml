@@ -21,7 +21,8 @@ once_cell = "1.5.2"
 slice-group-by = "0.3.0"
 unicode-segmentation = "1.6.0"
 whatlang = "0.13.0"
-lindera = { version = "=0.16.0", features = ["full"], optional = true }
+lindera = { version = "=0.16.0", features = ["ipadic"], optional = true }
+lindera-ko-dic = { version = "=0.16.0", features = ["ko-dic"], optional = true }
 
 [features]
 default = ["chinese", "hebrew", "japanese", "thai", "hangul"]
@@ -39,7 +40,7 @@ japanese = ["dep:lindera"]
 thai = []
 
 # allow hangul specialized tokenization
-hangul = ["dep:lindera"]
+hangul = ["dep:lindera-ko-dic"]
 
 
 [dev-dependencies]
