@@ -13,7 +13,7 @@ static LINDERA: Lazy<Tokenizer> = Lazy::new(|| {
         TokenizerConfig {dictionary: DictionaryConfig {
             kind: DictionaryKind::KoDic,
             path: None,
-        },mode: Mode::Normal(Penalty::default()), ..TokenizerConfig::default() };
+        },mode: Mode::Normal, ..TokenizerConfig::default() };
     Tokenizer::with_config(config).unwrap()
 });
 
