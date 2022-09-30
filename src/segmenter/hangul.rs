@@ -3,7 +3,7 @@ use lindera::mode::{Mode, Penalty};
 use lindera::tokenizer::{Tokenizer, TokenizerConfig, DictionaryConfig, DictionaryKind};
 use once_cell::sync::Lazy;
 
-/// Japanese specialized [`Segmenter`].
+/// Hangul specialized [`Segmenter`].
 ///
 /// This Segmenter uses lindera internally to segment the provided text.
 pub struct HangulSegmenter;
@@ -11,7 +11,7 @@ pub struct HangulSegmenter;
 static LINDERA: Lazy<Tokenizer> = Lazy::new(|| {
     let config =
         TokenizerConfig {dictionary: DictionaryConfig {
-            kind: DictionaryKind::KoDic,
+            kind: "ko-dic",
             path: None,
         },mode: Mode::Decompose(Penalty::default()), ..TokenizerConfig::default() };
     Tokenizer::with_config(config).unwrap()
