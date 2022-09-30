@@ -1,6 +1,6 @@
 use crate::segmenter::Segmenter;
 use lindera::mode::{Mode, Penalty};
-use lindera::tokenizer::{Tokenizer, TokenizerConfig, DictionaryConfig, DictionaryKind};
+use lindera::tokenizer::{Tokenizer, TokenizerConfig, DictionaryConfig};
 use once_cell::sync::Lazy;
 
 /// Hangul specialized [`Segmenter`].
@@ -13,7 +13,7 @@ static LINDERA: Lazy<Tokenizer> = Lazy::new(|| {
         TokenizerConfig {dictionary: DictionaryConfig {
             kind: "ko-dic",
             path: None,
-        },mode: Mode::Decompose(Penalty::default()), ..TokenizerConfig::default() };
+        },mode: Mode::Decompose(Penalty::default())};
     Tokenizer::with_config(config).unwrap()
 });
 
